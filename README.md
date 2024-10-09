@@ -1,4 +1,4 @@
-# esp32 bluetooth keyboard test
+# ESP32-BLE-WASD-Keyboard
 
 ESP32を使ったBluetoothキーボードのテスト
 
