@@ -4,12 +4,16 @@
 
 BleKeyboard bleKeyboard(KEYBOARD_NAME);
 
-bool isKeyDown(const int key_pin)
+void KeyInit(const uint8_t key_pin)
+{
+  pinMode(key_pin, INPUT_PULLUP);
+}
+bool isKeyDown(const uint8_t key_pin)
 {
   return !digitalRead(key_pin);
 }
 
-bool KeyReader(const int pin, const char key)
+bool KeyReader(const uint8_t pin, const char key)
 {
   const bool key_tmp = isKeyDown(pin);
 
@@ -23,10 +27,10 @@ bool KeyReader(const int pin, const char key)
 
 void setup()
 {
-  pinMode(PIN_W, INPUT_PULLUP);
-  pinMode(PIN_A, INPUT_PULLUP);
-  pinMode(PIN_S, INPUT_PULLUP);
-  pinMode(PIN_D, INPUT_PULLUP);
+  KeyInit(PIN_W);
+  KeyInit(PIN_A);
+  KeyInit(PIN_S);
+  KeyInit(PIN_D);
   pinMode(PIN_LED, OUTPUT);
   bleKeyboard.begin();
 }
