@@ -48,11 +48,15 @@ void loop()
   // 10ms 待機
   delay(10);
 
-  // WASD 入力
-  if (KeyReader(PIN_W, 'w') ||
-      KeyReader(PIN_A, 'a') ||
-      KeyReader(PIN_S, 's') ||
-      KeyReader(PIN_D, 'd'))
+  // 押されているキーがあったら true
+  bool isAnyPush = false;
+
+  isAnyPush = KeyReader(PIN_W, 'w') ? true : isAnyPush;
+  isAnyPush = KeyReader(PIN_A, 'a') ? true : isAnyPush;
+  isAnyPush = KeyReader(PIN_S, 's') ? true : isAnyPush;
+  isAnyPush = KeyReader(PIN_D, 'd') ? true : isAnyPush;
+
+  if (isAnyPush)
     // LED 点灯
     digitalWrite(PIN_LED, HIGH);
   else
